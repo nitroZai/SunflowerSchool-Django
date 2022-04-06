@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="p-3 mb-2 bg-primary text-white" style="text-align: center;">{{student.first_name}}'s Profile</h1>
+
+<div class="container">
+    
+    
+    <h4><a href="{% url 'home' %}">Get back to Home Page</a></h3>
+    <h4><a href="{% url 'complete' %}">Get back to Alumni Page</a></h3>
+    <h2>Marks</h2>
+    
+    <img class="img-fluid img-thumbnail" src="{{ student.picture }}">
+    
+    <table class="table table-striped table-hover table-bordered table-responsive" style="text-align: center;">
+    
+        <tr class="table-dark ">
+            <th>ID</th>
+            <th>Java</th>
+            <th>Python</th>
+            <th>SQL</th>
+        </tr>
+    
+        <tr style="text-align: center;">
+            <td>{{student.id}}</td>
+            <td>{{student.java}}</td>
+            <td>{{student.python}}</td>
+            <td>{{student.sql}}</td>
+        </tr>
+    
+    </table>
+</div>
+{% endblock %}

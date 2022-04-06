@@ -1,0 +1,91 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1 class="p-3 mb-2 bg-primary text-white" style="text-align: center;">Registration Form</h1>
+<br>
+<div class="container">
+
+<h3>General</h3>
+<br>
+
+  <form action="{% url 'success' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+    <div class="row">
+      <div class="col">
+        <label for="fname" class="form-label">First Name:</label>
+        <input type="text" name = 'fname' class="form-control" placeholder="First name" required>
+        <div class="invalid-feedback">First Name is required</div>
+      </div>
+      <div class="col">
+        <label for="fname" class="form-label">Last Name:</label>
+        <input type="text" name = 'lname' class="form-control" placeholder="Last name" required>
+        <div class="invalid-feedback">Last Name is required</div>
+      </div>
+    </div>
+  
+      <br>
+  
+      <label for="dob" class="form-label">Date of Birth</label>
+      <input type="date" name="dob" class="form-control" required>
+  
+      <br>
+  
+      <label for="pname" class="form-label">Parent Name</label>
+      <input type="text" class="form-control" name="pname">
+      <br>
+  
+      <label for="address" class="form-label">Address</label>
+      <br>
+      <textarea name="address" class="form-control" cols="10" rows="10"></textarea>
+      <br>
+      <br>
+  
+      <label for="phone" class="form-label">Phone</label>
+      <input type="number" class="form-control" name="phone">
+      
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" name="email" class="form-control" required>
+      
+      <label for="branch" class="form-label">Branch </label>
+      <select name="branch" class="form-control custom-select custom-select-lg mb-3">
+          <option selected>Choose your Branch</option>
+          <option value="CSE">CSE</option>
+          <option value="IT">IT</option>
+          <option value="ECE">ECE</option>
+      </select>
+  
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Upload your picture</label>
+        <input class="form-control" type="file" id="formFile" name="picture">
+      </div>
+  
+      <br>
+  
+      <h3>Marks</h3>
+  <br>
+      <label for="java" class="form-label">Java</label>
+      <input type="number" class="form-control" name="java">
+  
+      <br>
+      <label for="python" class="form-label">Python</label>
+      <input type="number" class="form-control" name="python">
+      <br>
+  
+      <label for="sql" class="form-label">SQL</label>
+      <input type="number" class="form-control" name="sql">
+  
+      <br>
+  
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
+        <label class="custom-control-label" for="customControlValidation1">Agree to out Policies*</label>
+        <div class="invalid-feedback">Check this box to proceed further</div>
+      </div>
+  
+      <input type="submit" class="btn btn-dark btn-lg btn-block" name="submit">
+  </form>
+</div>
+
+{% endblock %}

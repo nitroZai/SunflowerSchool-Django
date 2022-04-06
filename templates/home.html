@@ -1,0 +1,22 @@
+{% extends 'base.html '%}
+
+
+{% block content %}
+<h1 class="p-3 mb-2 bg-primary text-white" style="text-align: center;"> Sunflower School</h1>
+<div class="container" style="padding: 4%;">
+    
+    <a  class="btn btn-dark" style="flex-basis: 50%;padding: 20px;" href="{% url 'admission' %}">
+        <h2 >Register Here</h2>
+    </a>
+
+</div>
+
+
+
+    <div class="container" style="padding: 4%;">
+        <a  style="flex-basis: 50%; text-align: center; width: 50%; padding: 20px;" class="btn btn-dark" href="{% url 'complete' %}">
+            <h2>Know our Prestigious Alumni</h2>
+        </a>
+    </div>
+
+{% endblock %}
