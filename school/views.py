@@ -2,6 +2,7 @@ from multiprocessing import context
 from student.models import Student
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseRedirect
 
 
 def home(request):
@@ -45,7 +46,6 @@ def success(request):
     student.email = email
     student.java = java
     student.python = python
-
     student.sql = sql
     student.branch = branch
     student.picture = file_url
@@ -107,7 +107,11 @@ def completeFilter_details(request, branch, id):
 def search(request):
 
     searchVar = request.GET['searchText']
-    student = Student.objects.get(pk=int(searchVar))
+
+    try:
+        student = Student.objects.get(pk=int(searchVar))
+    except:
+        return render(request, 'invalid-search.html')
 
     context = {
         'student': student

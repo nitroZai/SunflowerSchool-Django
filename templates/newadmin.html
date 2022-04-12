@@ -13,15 +13,13 @@
   <form action="{% url 'success' %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
     <div class="row">
-      <div class="col">
+      <div class="col success">
         <label for="fname" class="form-label">First Name:</label>
         <input type="text" name = 'fname' class="form-control" placeholder="First name" required>
-        <div class="invalid-feedback">First Name is required</div>
       </div>
-      <div class="col">
+      <div class="col error">
         <label for="fname" class="form-label">Last Name:</label>
         <input type="text" name = 'lname' class="form-control" placeholder="Last name" required>
-        <div class="invalid-feedback">Last Name is required</div>
       </div>
     </div>
   
@@ -34,6 +32,7 @@
   
       <label for="pname" class="form-label">Parent Name</label>
       <input type="text" class="form-control" name="pname">
+
       <br>
   
       <label for="address" class="form-label">Address</label>
@@ -43,7 +42,9 @@
       <br>
   
       <label for="phone" class="form-label">Phone</label>
-      <input type="number" class="form-control" name="phone">
+      <input type="number" id = "phone-number" class="form-control" name="phone">
+      <small id="phone-small"></small>
+      <br>
       
       <label for="email" class="form-label">Email address</label>
       <input type="email" name="email" class="form-control" required>
@@ -58,7 +59,7 @@
   
       <div class="mb-3">
         <label for="formFile" class="form-label">Upload your picture</label>
-        <input class="form-control" type="file" id="formFile" name="picture">
+        <input class="form-control" type="file" id="formFile" name="picture" accept="image/png, image/gif, image/jpeg">
       </div>
   
       <br>
@@ -66,26 +67,100 @@
       <h3>Marks</h3>
   <br>
       <label for="java" class="form-label">Java</label>
-      <input type="number" class="form-control" name="java">
+      <input type="number" id="java-marks" class="form-control" name="java">
+      <small id="java-small"></small>
   
       <br>
       <label for="python" class="form-label">Python</label>
-      <input type="number" class="form-control" name="python">
+      <input type="number" id="python-marks" class="form-control" name="python">
+      <small id="python-small"></small>
       <br>
   
       <label for="sql" class="form-label">SQL</label>
-      <input type="number" class="form-control" name="sql">
-  
+      <input type="number" id="sql-marks" class="form-control" name="sql">
+      <small id="sql-small"></small>
       <br>
   
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
-        <label class="custom-control-label" for="customControlValidation1">Agree to out Policies*</label>
+        <label class="custom-control-label" for="customControlValidation1">Agree to our Policies(*)</label>
         <div class="invalid-feedback">Check this box to proceed further</div>
       </div>
   
-      <input type="submit" class="btn btn-dark btn-lg btn-block" name="submit">
+      <input type="submit" onclick="validate()" class="btn btn-dark btn-lg btn-block" name="submit">
   </form>
+
+
+  <script>
+    document.querySelector("#phone-number").addEventListener("keydown", (e) => {
+      validatePhone();
+    });
+    document.querySelector("#java-marks").addEventListener("keypress", (e)=> {
+      validateJava();
+    })
+    document.querySelector("#python-marks").addEventListener("keydown", (e)=> {
+      validatePython();
+    })
+    document.querySelector("#sql-marks").addEventListener("keypress", (e)=> {
+      validateSQL();
+    })
+  
+    function validatePython(){
+      var python_marks = document.getElementById("python-marks");
+      pythonIntValue = parseInt(python_marks.value);
+
+      var smallHTML = document.getElementById("python-small")
+
+      if(pythonIntValue > 0 && pythonIntValue <= 100  ){
+        smallHTML.innerHTML = ""
+      }else{
+        smallHTML.innerHTML = "Invalid Marks"
+      }
+    }
+
+    function validateJava(){
+      var python_marks = document.getElementById("java-marks");
+      pythonIntValue = parseInt(python_marks.value);
+
+      var smallHTML = document.getElementById("java-small")
+
+      if(pythonIntValue > 0 && pythonIntValue <= 100  ){
+        smallHTML.innerHTML = ""
+      }else{
+        smallHTML.innerHTML = "Invalid Marks"
+      }
+    }
+
+    function validateSQL(){
+      var python_marks = document.getElementById("sql-marks");
+      pythonIntValue = parseInt(python_marks.value);
+
+      var smallHTML = document.getElementById("sql-small")
+
+      if(pythonIntValue > 0 && pythonIntValue <= 100  ){
+        smallHTML.innerHTML = ""
+      }else{
+        smallHTML.innerHTML = "Invalid Marks"
+      }
+    }
+
+
+    function validatePhone() {
+
+        var phone_number = document.getElementById('phone-number');
+      
+        var smallHTML = document.getElementById('phone-small')
+
+        console.log("fasdf")
+  
+        if (phone_number.value.length > 10 || phone_number.value.length <= 9) {
+          smallHTML.innerHTML = "Invalid Phone Number"
+        }else{
+          smallHTML.innerHTML = ""
+        }
+        }
+    </script>
+
 </div>
 
 {% endblock %}

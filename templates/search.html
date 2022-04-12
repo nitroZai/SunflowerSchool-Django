@@ -4,11 +4,12 @@
 <h1 class="p-3 mb-2 bg-primary text-white" style="text-align: center;">{{student.first_name}}'s Profile</h1>
 <div class="container">
     
-    
+    <center>
     <h2>Marks</h2>
     <h4><a href="{% url 'home' %}">Get back to Home Page</a></h3>
     <h4><a href="{% url 'complete' %}">Get back to Alumni Page</a></h3>
-    <img class="img-thumbnail" src="{{ student.picture }}">
+        <br>
+    <img class="img-thumbnail" src="{{ student.picture }}" style="height: 30%; width: 30%;"></center>
     <table class="table table-striped table-hover table-bordered table-responsive" style="text-align: center;">
     
         <tr class="table-dark ">
